@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn" class="btn btn-outline-primary">back to top</button>
+    <input id="check" type="checkbox"><label>&nbsp;I accept</label>
+    <button class="btn btn-primary " id="submit" disabled>Submit</button>
+    <table class="table table-hover w-25 text-center mt-4" id="table">
+        <thead>
+            <tr id="color">
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+            </tr>
+            <tr id="color1">
+                <td>Resti</td>
+                <td>Fuentes</td>
+            </tr>
+            <tr>
+                <td> Mark</td>
+                <td>Otto</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" id="changeAlt">Change Alternate Color</button>
+    <br>
+    <input id="input" class="text-name" type="text" maxlength="15"><br>
+    <span id="remain">15</span>&nbsp;Character(s) remaining. <br>
+    <strong><span id="text"></span></strong>
+    <br><br>
+
+    <div class="add text-center">
+        <button class="btn btn-primary add">Add</button>
+        <select name="dropdown" class="dropdown"></select>
+        <button class="btn btn-danger remove">Remove</button>
+    </div>
+
+    <div class="text-center">      
+        <button class="btn btn-success" id="greetings">Good Morning</button>
+        <br>
+        <label>Input Amount: </label> <input type="text" id="amount" class="numeric">
+  <br><br>
+
+    <button class="btn btn-primary change-size">Animate</button><br><br>
+    <p class="fuentes" >Fuentes</p>
+    <br><br><br><br>
+<div>
+    <button class="btn btn-warning up">Up</button>
+    <button class="btn btn-warning down">Down</button>
+    <br>
+    <br>
+    <br>
+    <button class="btn btn-warning left">Left</button>
+    <button class="btn btn-warning right">Right</button>
+</div>
+<br><br><br>
+<div class="square "></div>
+</div>
+    <script>
+        $(document).ready(function () {      
+            // scroll from bottom to top
+            var away = false;
+            $('#btn').on("click",function () {
+                $("html").animate({ scrollTop: 0 }, 500);
+            });
+
+            //disabled and enable the button submit
+            $('#check').on("click",function () {
+                if ($(this).is(':checked')) {
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $('#submit').prop('disabled', true);
+                }
+            });
+            //change color
+            $('#changeAlt').on("click",function () {
+                $('#color').css("background-color", "blue");
+                $('#color1').css("background-color", "blue");
+
+            });
+
+            //maximum of 15 characters
+            $('#input').on('keyup', function () {
+                var input = $(this).val().length;
+                var text = $(this).val();
+                var count = 15;
+                if (input <= count) {
+                    count = count - input;
+                    $('#remain').html(count);
+                    $('#text').html(text);
+                }
+            });
+
+
+
+            //greetings
+            $('#greetings').on("click",function () {
+                var morning = "Good Morning";
+                if ($('#greetings').text() == morning) {
+                    $('#greetings').text("Good Evening");
+                } else {
+                    $('#greetings').text(morning);
+                }
+            });
+         
+
+            //adding dropdown value
+             $('.add').on('click', function () {
+                    var add = $('.text-name').val();
+                    $('.dropdown').append('<option value="' + add + '">' + add + '</option>')
+               });
+
+               //removing dropdown value
+               $('.remove').on('click', function () {
+                    var remove = $('.dropdown').val();
+                    $('.dropdown option[value="' + remove + '"]').remove();
+               }); 
+
+                //numbers only not include letters and chracters  
+                $('.numeric').keyup(function () {
+                    this.value = this.value.replace(/[^0-9\.]/g, '');
+               });
+
+               //animation changing size
+                 $('.change-size').on("click",function () {
+                    $(".fuentes").animate({
+                         width: "70%",
+                         opacity:0.4,
+                         fontSize: "3em",
+                         borderWidth: "8px"
+                    }, 1300);
+               }); 
+
+              //block animation
+                 $('.up').on("click",function () {
+                    $('.square').animate({
+                         top: '-=70px'
+                    }, 'slow');
+               });
+               $('.down').on("click",function () {
+                    $('.square').animate({
+                         top: '+=70px'
+                    }, 'slow');
+               });
+
+                $('.right').on("click",function () {
+                    $('.square').animate({
+                         left: '+=70px'
+                    }, 'slow');
+               });
+
+               $('.left').on("click",function () {
+                    $('.square').animate({
+                         left: '-=70px'
+                    }, 'slow');
+               });
+
+              
+
+              
+         
+
+        });
+
+    </script>
+</body>
+
+</html>

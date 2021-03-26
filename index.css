@@ -1,0 +1,64 @@
+html {
+    margin:0;
+    padding:0;
+    height:2000px;
+    }
+    
+    body {
+    height:2000px;   
+    }
+    
+    #btn {
+    position:fixed;
+    margin-top: 40%;
+    }
+    
+  
+    #submit{
+        margin-left: 50%;
+    }
+    #check{
+        margin-top: 5%;
+        margin-left: 50%;
+    }
+    #table{
+        margin-left: 40%;
+    }
+    #changeAlt{
+        margin-left: 46%;
+    }
+    #color{
+        color: white;
+        background-color: red;
+    }
+    #color1{
+        color: white;
+        background-color: red;
+    }
+    #input{
+        margin-top: 3%;
+        margin-left: 46%;
+    }
+    #remain{
+        margin-top: 3%;
+        margin-left: 46%;
+    }
+    #text{
+        color: blue;
+        margin-top: 3%;
+        margin-left: 46%;
+    }
+    .square {
+        position: absolute;
+        background-color: black;
+        margin: 50px;
+        left: 40px;
+        width: 120px;
+        height: 120px;
+       
+    }
+    
+   
+    .square {
+        display: block;
+    }
